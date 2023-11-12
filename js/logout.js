@@ -1,0 +1,36 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import {
+getAuth,
+signOut 
+} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDnMFmRHILUrbNBuFIj3xZ9ussbhLKAAko",
+    authDomain: "website-2364c.firebaseapp.com",
+    projectId: "website-2364c",
+    storageBucket: "website-2364c.appspot.com",
+    messagingSenderId: "98392381307",
+    appId: "1:98392381307:web:6a0b8c4a801e2301848fde",
+    measurementId: "G-1GP8Q1V52N"
+  };
+
+
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const auth = getAuth();
+        
+const signOutButton = document.getElementById("logout-link");
+
+// Sign-Out
+const signOutNow = () => {
+signOut(auth).then(() => {
+// Sign-out successful.
+window.location = "./index.html";
+}).catch((error) => {
+// An error happened.
+});
+}
+signOutButton.addEventListener('click', signOutNow);
